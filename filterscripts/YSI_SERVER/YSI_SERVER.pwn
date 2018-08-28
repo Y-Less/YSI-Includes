@@ -1,37 +1,19 @@
 #pragma dynamic 65536
 
-// Enable the YSI internal tests.
-#define YSI_TESTS
+// This is a filterscript.
+#define FILTERSCRIPT
 
-// Enable some slower tests.
-#define YSI_HASHMAP_TESTS
+// Disable the y_inline deprecation warnings.
+#pragma warning disable 234
 
-// Fix many common issues.
-#define YSI_NO_HEAP_MALLOC
-
-// Close the server after finishing the tests.
-#define TEST_AUTO_EXIT
-
-// Disable the internal test verification system.
-#define _YSI_NO_TEST_VERIFICATION
-
-// Disable the startup version check.
-#define _YSI_NO_VERSION_CHECK
+// Make this a master server.
+#define YSI_IS_SERVER
 
 // The mode name to use for file saving.
-#define MODE_NAME "YSI_TEST"
+#define MODE_NAME "YSI_SERVER"
 
 // Use whirlpool for password hashing.
 #define PP_WP
-
-// Should the group system be included before or after other includes?
-#if !defined GTYPE
-	#error No group type given.
-#endif
-
-#if !defined _DEBUG
-	#define _DEBUG -1
-#endif
 
 #define FIXES_Single 0
 
@@ -39,9 +21,7 @@
 #include <fixes>
 #include <whirlpool>
 
-#if GTYPE == 0
-	#include <YSI-Players/y_groups>
-#endif
+#include <YSI-Players/y_groups>
 
 // Failing tests are removed with "//", slow tests with "////".
 #include <YSI-Coding\y_hooks>
@@ -68,9 +48,6 @@
 #include <YSI-Data/y_playerarray>
 #include <YSI-Data\y_playerset>
 
-#if GTYPE == 1
-	#include <YSI-Players/y_groups>
-#endif
 //#include <YSI-Players\y_languages>
 //#include <YSI-Players\y_text>
 //#include <YSI-Players\y_users>
@@ -97,8 +74,4 @@
 //#include <YSI-Visual\y_races>
 //#include <YSI-Visual\y_zonenames>
 #include <YSI-Visual/y_zonepulse>
-
-#if GTYPE == 2
-	#include <YSI-Players\y_groups>
-#endif
 
